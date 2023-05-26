@@ -1,0 +1,37 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Product  Details Update{% endblock %}
+{% block background %}background="https://images.pexels.com/photos/1029612/pexels-photo-1029612.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" {% endblock %}
+
+{% block body %}
+<center>
+    <h2><font color="#366092">Product Update</font></h2>
+<div class="container">
+    <form name="frm"  role="form" action="{% url 'admin_product_update' %}" method="post"
+        enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="form-group">
+               <label for="product_name">Product Name</label>
+               <input type="text" class="form-control" id="product_name" name="product_name" placeholder="title "  required="required" value="{{ up.product_name }}">
+           </div>
+
+           <div class="form-group">
+               <label for="desc">descrip</label>
+               <input type="text"  class="form-control" id="desc" name="desc"  required="required" value="{{ up.desc }}" >
+           </div>
+
+           <div class="form-group">
+             <label for="price">Price</label>
+            <input type="text"  class="form-control" id="price" name="price" value="{{ up.price }}"  placeholder="price"  >
+           </div>
+
+
+            <button type="submit" class="btn btn-info" id="bt" name="bt">update</button>
+            <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+
+        <input type="hidden" name="id" value="{{up.id}}">
+         {{msg}}
+    </form>
+</div>
+</center>
+{% endblock %}

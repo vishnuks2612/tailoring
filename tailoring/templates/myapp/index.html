@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>SEWCIAL</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static './myapp/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static './myapp/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static './myapp/css/responsive.css' %}" rel="stylesheet" />
+  <style>
+    .dropbtn {
+      background-color: #fc5d35;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static './myapp/images/logo.png' %}" alt="" /><span>
+              SEWCIAL
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+              <div class="dropdown">
+                <button class="dropbtn">Services</button>
+                <div class="dropdown-content">
+
+                  <a href="{% url 'user_login' %}">Shirt Stitching</a>
+                  <a href="{% url 'user_login' %}">Kurta Stitching</a>
+                  <a href="{% url 'user_login' %}">Pants Stitching</a>
+                  <a href="{% url 'user_login' %}">Bottom Stitching</a>
+                  <a href="{% url 'user_login' %}">Gown Stitching</a>
+                  <a href="{% url 'user_login' %}">Blouse Stitching</a>
+                  <a href="{% url 'user_login' %}">Salwar Suit Stitching</a>
+                  <a href="{% url 'user_login' %}">Semi-Western Stitching</a>
+                  <a href="{% url 'user_login' %}">Kids Wear Stitching</a>
+
+                </div>
+              </div>
+
+
+
+              <div class="dropdown">
+                <button class="dropbtn">Contact Us</button>
+                <div class="dropdown-content">
+
+
+                  <a href="">Contact Us</a>
+                </div>
+              </div>
+
+
+
+
+
+              <div class="dropdown">
+                <button class="dropbtn">Blog</button>
+                <div class="dropdown-content">
+
+
+                  <a href=" ">Blog</a>
+                </div>
+              </div>
+
+
+
+              <div class="dropdown">
+                <button class="dropbtn">About Us</button>
+                <div class="dropdown-content">
+
+
+                  <a href=" ">About Us</a>
+                </div>
+              </div>
+
+              </ul>
+              <div class="dropdown">
+                <button class="dropbtn">My Account</button>
+                <div class="dropdown-content">
+
+
+                  <a href="{% url 'user_login' %}">Login</a>
+                </div>
+              </div>
+
+            </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="slider_item-box">
+              <div class="slider_item-container">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="slider_item-detail">
+                        <div>
+                          <h1>
+                            Welcome To <br />
+                            The Ultimate Tailoring Shop
+                          </h1>
+
+                          <p>
+
+                          </p>
+                          <div class="d-flex">
+                            <a href="" class="text-uppercase custom_orange-btn mr-3">
+                              Shop Now
+                            </a>
+                            <a href="{% url 'user_login' %}" class="text-uppercase custom_dark-btn">
+                              Contact Us
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="slider_img-box">
+                        <div>
+                          <img src="{% static './myapp/images/cardpng.png' %}" width="200" height="350" alt="" class="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+    </section>
+
+    <!-- end slider section -->
+  </div>
+
+  <!-- service section -->
+
+
+  <h2 class="custom_heading">Our Products</h2>
+  <div id='products' class="col-lg-9 mx-auto">
+    <div class="row mx-auto">
+      {% for x in details %}
+      <div class="card mx-auto mb-3" id={{x.id}} style="width: 18rem;">
+        <img class="card-img-top" src="{{x.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-title">{{x.product_name}}</p>
+          <p class="card-text"><b>{{x.price}}</b></p>
+          <span id="divpr{{x.id}}" class="divpr">
+            <a href="{% url 'user_login' %}"><button id="pr{{x.id}}" class="btn btn-primary cart">Add To Cart</button>
+          </span></a>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <p class="custom_heading-text">
+    We sell authentic and high-quality products at an affordable rate.
+  </p>
+
+
+  <!-- end fruits section -->
+
+  <!-- tasty section -->
+  <section class="tasty_section">
+    <div class="container_fluid">
+      <h2>
+        Order Your Choice
+      </h2>
+    </div>
+  </section>
+
+
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding" id="contact">
+    <div class="container">
+      <h2 class="font-weight-bold">
+        Contact Us
+      </h2>
+      <div class="row">
+        <div class="col-md-8 mr-auto">
+          <form action="">
+            <div class="contact_form-container">
+              <div>
+                <div>
+                  <input type="text" placeholder="Name">
+                </div>
+                <div>
+                  <input type="text" placeholder="Phone Number">
+                </div>
+                <div>
+                  <input type="email" placeholder="Email">
+                </div>
+
+                <div class="mt-5">
+                  <input type="text" placeholder="Message">
+                </div>
+                <div class="mt-5">
+                  <button type="submit">
+                    send
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  </div>
+
+  <!-- end contact section -->
+
+
+  <!-- map section -->
+  <!-- <section class="map_section">
+    <div id="map" class="h-100 w-100 ">
+    </div>
+  </section> -->
+
+  <!-- end map section -->
+
+
+
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2023 All Rights Reserved By
+      <a href="https://html.design/">SEWCIAL</a>
+    </p>
+  </section>
+
+  <section class="container-fluid footer_section">
+    <p>
+      <a href="{% url 'admin_login' %}">Admin</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="{% static './myapp/js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static './myapp/js/bootstrap.js' %}"></script>
+
+  <script>
+    // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+    // Australia.
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: {
+          lat: 40.645037,
+          lng: -73.880224
+        },
+      });
+
+      var image = 'images/maps-and-flags.png';
+      var beachMarker = new google.maps.Marker({
+        position: {
+          lat: 40.645037,
+          lng: -73.880224
+        },
+        map: map,
+        icon: image
+      });
+    }
+  </script>
+  <!-- google map js -->
+  <script
+    src=https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15731.589530228752!2d77.1614684!3d9.6897991!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07ab69610fadf5%3A0x3c7177763cbd5796!2sAlfin%20Varghese!5e0!3m2!1sen!2sin!4v1663656796273!5m2!1sen!2sin>
+    </script>
+  <!-- end google map js -->
+
+</body>
+
+</html>

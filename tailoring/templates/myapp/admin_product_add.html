@@ -1,0 +1,45 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Product  Details Add{% endblock %}
+{% block background %} {% endblock %}
+
+{% block body %}
+<center>
+    <h2><font color="#366092">Product Add</font></h2>
+<div class="container">
+    <form name="frm"  role="form" action="{% url 'admin_product_add' %}" method="post"
+        enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="form-group">
+               <label for="title">Product Name</label>
+               <input type="text" class="form-control" id="title" name="title" placeholder="title " required="required">
+           </div>
+
+           <div class="form-group">
+               <label for="desc">descrip</label>
+               <textarea class="form-control" id="desc" name="desc" required="required"></textarea>
+           </div>
+           <div class="form-group">
+             <label for="price">Price</label>
+            <input type="text"  class="form-control" id="price" name="price" placeholder="price"  >
+           </div>
+
+        <div class="form-group">
+                <label for="img">image :</label>
+                <input class="form-control" type="file" id="img" name="img" >
+            </div>
+
+            <select class="form-select" name="category">
+                <option selected>Open this select menu</option>
+                {% for category in categories %}
+                <option value="{{category.slug}}" >{{category}}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+            <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+        {{msg}}
+    </form>
+</div>
+</center>
+{% endblock %}

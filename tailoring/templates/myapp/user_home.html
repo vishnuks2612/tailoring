@@ -1,0 +1,31 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}Hello User{% endblock %}
+
+{% block body %}
+<center>
+	<h2>
+		<font color="#366092">Welcome {{ uname}}</font>
+	</h2>
+</center>
+
+<!-- all products -->
+<div id='products' class="col-lg-9 mx-auto">
+	<div class="row mx-auto">
+		{% for x in details %}
+		<div class="card mx-auto mb-3" id={{x.id}} style="width: 18rem;">
+			<img class="card-img-top" src="{{x.image.url}}" alt="Card image cap">
+			<div class="card-body">
+				<p class="card-title">{{x.product_name}}</p>
+				<p class="card-text"><b>{{x.price}}</b></p>
+				<a href="{% url 'user_add_cart' x.id %}" class="btn btn-info" id="bt" name="bt">BUY</a>
+				
+
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+{% endblock %}

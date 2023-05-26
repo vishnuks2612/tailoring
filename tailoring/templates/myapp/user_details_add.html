@@ -1,0 +1,260 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block background %}{% endblock %}
+
+{% block body %}
+<li>
+
+</li>
+<center>
+    <h2>New User Registration</h2>
+	<div class="container">
+    <form role="form" name="form1" id="form1" action="{% url 'user_details_add' %}" method="post" onsubmit="return validateForm();">
+        {% csrf_token %}
+        <div class="field">
+			<label for="fname"></label>
+	        <input class="form-control" type="text"  id="fname"  name="fname" onkeypress="return allowOnlyLetters(event,this);" placeholder="First name" required="required">
+			<input class="form-control" type="text"  id="lname" name="lname"  onkeypress="return allowOnlyLetters(event,this);" placeholder="Last name" required="required">
+			<span id="nameErrMsg" class="error"></span>
+		</div>
+
+	    <div class="field">
+			<label for="addr"></label>
+	        <input class="form-control" type="text"  id="addr" name="addr" onkeypress="return allowOnlyLetters(event,this);" placeholder="Street"  required="required">
+            <input type="number"  class="form-control" id="pin" name="pin"  placeholder="pin"  required="required">
+		</div>
+	    <div class="field">
+			<label for="contact"></label>
+	        <input type="tel"  class="form-control" id="contact" name="contact" onkeypress="return isNumberKey(event,this)" maxlength="10" placeholder="Enter contact"  required="required">
+		</div>
+		<div class="field">
+			<label for="email"></label>
+	       <input type="email" onblur="ValidateEmail(document.form1.email)" class="form-control" id="email" name="email" placeholder="Enter email id" required="required">
+		</div>
+        <div class="field">
+			<div class="error-text"></div>
+			<label for="pwd"></label>
+	        <input type="password" onkeyup="active()" class="form-control" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder=" Password" required="required"></td>
+		</div>
+		<div class="field">
+			<label for="pwd"></label>
+	        <input type="password"  onkeyup="active_2()"  class="form-control" id="pwd_1" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and  least 8 or more characters" placeholder="Confirm Password" required="required"></td>
+		</div>
+
+
+	    <button type="submit" class="btn btn-info" id="bt" name="bt">Register</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+
+
+	    </table>
+    </form>
+		<h2> {{msg}} </h2>
+	</div>
+</center>
+<script language="Javascript" type="text/javascript">
+
+function allowOnlyLetters(e, t)
+{
+   if (window.event)
+   {
+      var charCode = window.event.keyCode;
+   }
+   else if (e)
+   {
+      var charCode = e.which;
+   }
+   else { return true; }
+   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+       return true;
+   else
+   {
+      alert("Please enter only alphabets");
+      return false;
+   }
+}
+function isNumberKey(evt, obj) {
+
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            var value = obj.value;
+            var dotcontains = value.indexOf(".") != -1;
+            if (dotcontains)
+                if (charCode == 46) return false;
+            if (charCode == 46) return true;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+function ValidateEmail(mail){
+    	//  alert("You have entered an invalid email address!")
+    	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail.value)){
+    		return (true);
+    	}
+    	alert("You have entered an invalid email address!");
+    	return (false);
+	}
+
+
+const pwd = document.querySelector("#pwd");
+         const pwd_1 = document.querySelector("#pwd_1");
+         const errorText = document.querySelector(".error-text");
+         const showBtn = document.querySelector(".show");
+         const btn = document.querySelector("button");
+         function active(){
+           if(pwd.value.length >= 6){
+             btn.removeAttribute("disabled", "");
+             btn.classList.add("active");
+             pwd_1.removeAttribute("disabled", "");
+           }else{
+             btn.setAttribute("disabled", "");
+             btn.classList.remove("active");
+             pwd_1.setAttribute("disabled", "");
+           }
+         }
+         btn.onclick = function(){
+           if(pwd.value != pwd_1.value){
+             errorText.style.display = "block";
+             errorText.classList.remove("matched");
+             errorText.textContent = "Error! Confirm Password Not Match";
+             return false;
+           }else{
+             errorText.style.display = "block";
+             errorText.classList.add("matched");
+             errorText.textContent = "Nice! Confirm Password Matched";
+             return false;
+           }
+         }
+         function active_2(){
+           if(pwd_1.value != ""){
+             showBtn.style.display = "block";
+             showBtn.onclick = function(){
+               if((pwd.type == "password") && (pwd_1.type == "password")){
+                 pwd.type = "text";
+                 pwd_1.type = "text";
+                 this.textContent = "Hide";
+                 this.classList.add("active");
+               }else{
+                 pwd.type = "password";
+                 pwd_1.type = "password";
+                 this.textContent = "Show";
+                 this.classList.remove("active");
+               }
+             }
+           }else{
+             showBtn.style.display = "none";
+           }
+         }
+
+      </script>
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+html,body{
+  display: grid;
+  height: 100%;
+  place-items: center;
+  text-align: center;
+  background: #f2f2f2;
+}
+.container{
+  background: #fff;
+  padding: 20px 30px;
+  width: 420px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.container header{
+  padding-top: 5px;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 33px;
+}
+.container form{
+  margin: 5px 8px;
+}
+.container form .error-text{
+  background: #F8D7DA;
+  padding: 8px 0;
+  border-radius: 5px;
+  color: #8B3E46;
+  border: 1px solid #F5C6CB;
+  display: none;
+}
+.container form .error-text.matched{
+  background: #D4EDDA;
+  color: #588C64;
+  border-color: #C3E6CB;
+}
+.container form .field{
+  width: 100%;
+  height: 45px;
+  display: flex;
+  margin: 15px 0;
+  position: relative;
+}
+form .field input{
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgrey;
+  padding-left: 15px;
+  outline: none;
+  border-radius: 5px;
+  font-size: 17px;
+  transition: all 0.3s;
+}
+form .field input::placeholder{
+  font-size: 16px;
+}
+form .field input:focus{
+  border-color: #27ae60;
+  box-shadow: inset 0 0 3px #2fd072;
+}
+form .field .show{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+  cursor: pointer;
+  display: none;
+}
+form .field .show.active{
+  color: #27ae60;
+}
+form button{
+  width: 100%;
+  height: 45px;
+  margin: 3px 0 10px 0;
+  border: none;
+  outline: none;
+  background: #27ae60;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: no-drop;
+  opacity: 0.7;
+}
+form button.active{
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.3s;
+}
+form button.active:hover{
+  background: #219150;
+}
+</style>
+
+{% endblock %}
